@@ -35,9 +35,5 @@
 # x <- c(0.0, 0.19, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25)
 
 gps <- function(s, x) {
-        if ( length(x) <= 1 ) {
-                0
-        } else {
-                floor(max(3600 * diff(x) / s))
-        }
+        if (length(x) <= 1) 0 else floor(max(3600 * diff(x) / s))
 }
