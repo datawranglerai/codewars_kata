@@ -8,38 +8,40 @@
 
 
 dec2hex <- function(decimal) {
-        hexadecimals <- c(1:9, LETTERS[1:6])
-        if ( decimal <= 15 & decimal >= 0 & decimal %% 1 == 0) {
-                hexadecimals[decimal]
-        } else {
-                stop('dec must be a whole number between 0 and 15!')
-        }
+        hexadecimals <- c(0:9, LETTERS[1:6])
+        hexadecimals[decimal + 1]
 }
 
 
 decimal_to_hexadecimal <- function(x) {
-        
-        quotient <- x %/% 16
-        remainder <- x %% 16  # last digit of hexadecimal number
          
         quotient <- x
         
         remainders <- c()
-        while ( quotient > 16 ) {
+        while ( quotient >= 16 ) {
                 remainder <- quotient %% 16
                 quotient <- quotient %/% 16
                 remainders <- c(remainder, remainders)
         }
         
         final_code <- c(quotient, remainders)
-        hex_code <- lapply(final_code, dec2hex)
         
-        paste0(dec2hex(first_digit), dec2hex(remainder))
+        hex_code <- paste(
+                dec2hex(final_code), 
+                collapse = ""
+        )
         
+        sprintf("%02s", hex_code)
         
 }
 
 rgb <- function(r, g, b) {
         
-               
+        # TODO make sure values are between 0 and 255 e.g. -20 == 0, 275 == 255
+        
+        rgb_clean <- lapply( c(r, g, b), function(x) {
+                ifelse()
+        } )
+        
+        paste(lapply(rgb_clean, decimal_to_hexadecimal), collapse = "")
 }
