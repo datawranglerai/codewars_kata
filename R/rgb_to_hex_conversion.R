@@ -35,13 +35,20 @@ decimal_to_hexadecimal <- function(x) {
         
 }
 
+
+check_limits <- function(...) {
+        x <- c(...)
+        ifelse(x < 0, 0, ifelse(x > 255, 255, x))
+}
+
 rgb <- function(r, g, b) {
         
-        # TODO make sure values are between 0 and 255 e.g. -20 == 0, 275 == 255
-        
-        rgb_clean <- lapply( c(r, g, b), function(x) {
-                ifelse()
-        } )
-        
-        paste(lapply(rgb_clean, decimal_to_hexadecimal), collapse = "")
+        paste(
+                lapply(
+                        check_limits(r, g, b), 
+                        decimal_to_hexadecimal
+                ), 
+                collapse = ""
+        )
 }
+

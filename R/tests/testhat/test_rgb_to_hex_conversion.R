@@ -10,4 +10,5 @@ test_that("Example Tests", {
         expect_equal(rgb(255, 255, 255), "FFFFFF")
         expect_equal(rgb(254, 253, 252), "FEFDFC")
         expect_equal(rgb(-20, 275, 125), "00FF7D")
+        expect_equal(rgb(203, 222, 14), "CBDE0E")
 })
